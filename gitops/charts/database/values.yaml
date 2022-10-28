@@ -1,0 +1,6 @@
+database:
+  name: demo
+  password: demo
+  username: demo
+project:
+  name: demo
