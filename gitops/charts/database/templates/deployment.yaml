@@ -7,11 +7,13 @@ metadata:
 spec:
   replicas: 1
   selector:
-    service-mesh-demo-component: database
+    app.kubernetes.io/name: service-mesh-demo
+    app.kubernetes.io/component: database
   template:
     metadata:
       labels:
-        service-mesh-demo-component: database
+        app.kubernetes.io/name: service-mesh-demo
+        app.kubernetes.io/component: database
     spec:
       containers:
         - env:
