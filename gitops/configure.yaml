@@ -3,13 +3,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: database
+  namespace: openshift-gitops
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    helm:
-      values: {}
     path: gitops/charts/database
     repoURL: 'https://github.com/agbaroni/service-mesh-demo.git'
     targetRevision: main
@@ -18,22 +17,22 @@ spec:
       prune: yes
       selfHeal: yes
 ---
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: api-service
-spec:
-  destination:
-    server: 'https://kubernetes.default.svc'
-  project: default
-  source:
-    helm:
-      values: {}
-    path: gitops/charts/api-service
-    repoURL: 'https://github.com/agbaroni/service-mesh-demo.git'
-    targetRevision: main
-  syncPolicy:
-    automated:
-      prune: yes
-      selfHeal: yes
----
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: api-service
+# spec:
+#   destination:
+#     server: 'https://kubernetes.default.svc'
+#   project: default
+#   source:
+#     helm:
+#       values: {}
+#     path: gitops/charts/api-service
+#     repoURL: 'https://github.com/agbaroni/service-mesh-demo.git'
+#     targetRevision: main
+#   syncPolicy:
+#     automated:
+#       prune: yes
+#       selfHeal: yes
+# ---

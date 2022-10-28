@@ -18,7 +18,7 @@ spec:
             - name: POSTGRESQL_USER
               value: '{{ .Values.database.username }}'
             - name: POSTGRESQL_PASSWORD
-              value: '{{ .Values.databae.password }}'
+              value: '{{ .Values.database.password }}'
             - name: POSTGRESQL_DATABASE
               value: '{{ .Values.database.name }}'
           image: 'registry.redhat.io/rhel9/postgresql-13:latest'
