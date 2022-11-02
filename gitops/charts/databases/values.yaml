@@ -1,0 +1,9 @@
+databases:
+  - name: database1
+    password: password1
+    username: username1
+  - name: database2
+    password: password2
+    username: username2
+project:
+  name: demo

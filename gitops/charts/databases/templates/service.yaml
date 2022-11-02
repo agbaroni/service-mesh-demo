@@ -1,0 +1,21 @@
+{{- range .Values.databases }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/component: '{{ .name }}'
+    app.kubernetes.io/part-of: service-mesh-demo
+  name: '{{ .name }}'
+  namespace: '{{ .Values.project.name }}'
+spec:
+  ports:
+    - name: postgres-default
+      port: 5432
+      targetPort: 5432
+  selector:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/component: '{{ .name }}'
+    app.kubernetes.io/part-of: service-mesh-demo
+{{- end }}

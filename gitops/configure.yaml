@@ -2,21 +2,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: database
+  name: databases
   namespace: openshift-gitops
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: gitops/charts/database
+    path: gitops/charts/databases
     repoURL: 'https://github.com/agbaroni/service-mesh-demo.git'
     targetRevision: main
   syncPolicy:
     automated:
       prune: yes
       selfHeal: yes
----
+# ---
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
 # metadata:
