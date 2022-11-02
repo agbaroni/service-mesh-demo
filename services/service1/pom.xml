@@ -87,12 +87,20 @@
       <artifactId>quarkus-config-yaml</artifactId>
       <groupId>${quarkus.groupId}</groupId>
     </dependency>
+    <!-- <dependency> -->
+    <!--   <artifactId>quarkus-keycloak-authorization</artifactId> -->
+    <!--   <groupId>${quarkus.groupId}</groupId> -->
+    <!-- </dependency> -->
+    <!-- <dependency> -->
+    <!--   <artifactId>quarkus-oidc</artifactId> -->
+    <!--   <groupId>${quarkus.groupId}</groupId> -->
+    <!-- </dependency> -->
     <dependency>
-      <artifactId>quarkus-keycloak-authorization</artifactId>
+      <artifactId>quarkus-hibernate-reactive</artifactId>
       <groupId>${quarkus.groupId}</groupId>
     </dependency>
     <dependency>
-      <artifactId>quarkus-oidc</artifactId>
+      <artifactId>quarkus-reactive-pg-client</artifactId>
       <groupId>${quarkus.groupId}</groupId>
     </dependency>
     <dependency>
