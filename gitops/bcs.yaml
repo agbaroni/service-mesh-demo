@@ -1,0 +1,32 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: service1
+  namespace: demo
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'service1:latest'
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'ubi8-openjdk-11:1.12'
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/agbaroni/service-mesh-demo.git'
+    contextDir: services/service1
+  triggers:
+    - type: GitHub
+      github:
+        secret: c3kwrCh4pDdcIzP6olZn
+    - type: Generic
+      generic:
+        secret: 9ZUPAn1ddhAIBCit3MTj
+    - type: ConfigChange
+    - type: ImageChange
+      imageChange: {}
