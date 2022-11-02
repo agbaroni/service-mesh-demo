@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/component: '{{ .name }}'
     app.kubernetes.io/part-of: service-mesh-demo
   name: '{{ .name }}'
-  namespace: '{{ .Values.project.name }}'
+  namespace: '{{ $.Values.project.name }}'
 spec:
   ports:
     - name: postgres-default
