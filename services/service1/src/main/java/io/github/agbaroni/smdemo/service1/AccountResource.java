@@ -30,7 +30,8 @@ public class AccountResource implements Serializable {
     public Uni<List<Account>> getAll(@PathParam("user") String user) {
 	return sessionFactory.withSession(session -> {
 		return session.createNamedQuery(Account.SELECT_ALL,
-						Account.class).getResultList();
+						Account.class).setParameter("user",
+									    user).getResultList();
 	    });
     }
 
@@ -40,7 +41,9 @@ public class AccountResource implements Serializable {
 			       @PathParam("account") String account) {
 	return sessionFactory.withSession(session -> {
 		return session.createNamedQuery(Account.SELECT_ONE,
-						Account.class).getSingleResultOrNull();
+						Account.class).setParameter("id",
+									    account)
+		    .setParameter("user", user).getSingleResultOrNull();
 	    });
     }
 

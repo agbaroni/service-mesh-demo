@@ -19,8 +19,8 @@ import lombok.Setter;
 @Entity
 @EqualsAndHashCode
 @NamedQueries({
-	@NamedQuery(name = Account.SELECT_ALL, query = "SELECT a FROM Account a WHERE a.user = :user"),
-	@NamedQuery(name = Account.SELECT_ONE, query = "SELECT a FROM Account a WHERE a.id = :id AND a.user = :user")
+	@NamedQuery(name = Account.SELECT_ALL, query = "SELECT a FROM Account a WHERE a.key.user = :user"),
+	@NamedQuery(name = Account.SELECT_ONE, query = "SELECT a FROM Account a WHERE a.key.id = :id AND a.key.user = :user")
 })
 @Table(name = "ACCOUNTS")
 public class Account implements Serializable {
@@ -32,7 +32,7 @@ public class Account implements Serializable {
     @EmbeddedId
     @Getter
     @Setter
-    private AccountKey accountKey;
+    private AccountKey key;
 
     @EqualsAndHashCode.Exclude
     private double amount;

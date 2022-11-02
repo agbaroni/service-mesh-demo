@@ -1,0 +1,7 @@
+apiVersion: build.openshift.io/v1
+kind: Build
+metadata:
+  name: service1
+  namespace: demo
+spec:
+  
