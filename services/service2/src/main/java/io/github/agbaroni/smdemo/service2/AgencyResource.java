@@ -41,10 +41,4 @@ public class AgencyResource implements Serializable {
 						Agency.class).setParameter("id", id).getSingleResultOrNull();
 	    });
     }
-
-    @PUT
-    @Path("/{id}")
-    public Uni<Agency> updateOne(@PathParam("id") String id, Agency agency) {
-	return null;
-    }
 }

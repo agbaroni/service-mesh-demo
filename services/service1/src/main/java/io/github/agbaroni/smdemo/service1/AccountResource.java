@@ -46,11 +46,4 @@ public class AccountResource implements Serializable {
 		    .setParameter("user", user).getSingleResultOrNull();
 	    });
     }
-
-    @PUT
-    @Path("/{user}/{account}")
-    public Uni<Account> updateOne(@PathParam("user") String user,
-				  @PathParam("account") String account) {
-	return null;
-    }
 }

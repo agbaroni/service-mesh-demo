@@ -8,5 +8,6 @@ quarkus:
   hibernate-orm:
     database:
       generation: drop-and-create
+    sql-load-script: 'import.sql'
   package:
     type: uber-jar
