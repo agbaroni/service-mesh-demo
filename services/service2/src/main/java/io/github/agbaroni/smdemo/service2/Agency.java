@@ -1,4 +1,4 @@
-package io.github.agbaroni.smdemo.service1;
+package io.github.agbaroni.smdemo.service2;
 
 import java.io.Serializable;
 

@@ -96,6 +96,10 @@
     <!--   <groupId>${quarkus.groupId}</groupId> -->
     <!-- </dependency> -->
     <dependency>
+      <artifactId>quarkus-rest-client-reactive</artifactId>
+      <groupId>${quarkus.groupId}</groupId>
+    </dependency>
+    <dependency>
       <artifactId>quarkus-resteasy-reactive</artifactId>
       <groupId>${quarkus.groupId}</groupId>
     </dependency>

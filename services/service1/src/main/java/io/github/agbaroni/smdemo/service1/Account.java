@@ -19,7 +19,7 @@ import lombok.Setter;
 @Entity
 @EqualsAndHashCode
 @NamedQueries({
-	@NamedQuery(name = Account.SELECT_ALL, query = "SELECT a FROM Account a WHERE a.key.user = :user"),
+	@NamedQuery(name = Account.SELECT_ALL, query = "SELECT a FROM Account a WHERE a.key.agency = :agency"),
 	@NamedQuery(name = Account.SELECT_ONE, query = "SELECT a FROM Account a WHERE a.key.id = :id AND a.key.user = :user")
 })
 @Table(name = "ACCOUNTS")

@@ -26,12 +26,12 @@ public class AccountResource implements Serializable {
     Mutiny.SessionFactory sessionFactory;
 
     @GET
-    @Path("/{user}")
-    public Uni<List<Account>> getAll(@PathParam("user") String user) {
+    @Path("/{agency}")
+    public Uni<List<Account>> getAll(@PathParam("agency") String agency) {
 	return sessionFactory.withSession(session -> {
 		return session.createNamedQuery(Account.SELECT_ALL,
-						Account.class).setParameter("user",
-									    user).getResultList();
+						Account.class).setParameter("agency",
+									    agency).getResultList();
 	    });
     }
 
