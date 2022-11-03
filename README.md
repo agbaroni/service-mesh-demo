@@ -5,8 +5,6 @@ oc new-project demo
 
 oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n demo
 
-oc apply -f gitops/configure.yaml
-
 oc patch configs.imageregistry.operator.openshift.io/cluster --patch '{"spec":{"defaultRoute":true}}' --type=merge
 
 HOST=$(oc get route default-route -n openshift-image-registry --template='{{ .spec.host }}')
@@ -46,6 +44,12 @@ cd services/api
 buildah build -t $HOST/demo/api:latest .
 
 buildah push --tls-verify=false $HOST/demo/api:latest
+```
+
+# Configure GitOps
+
+```
+oc apply -f gitops/applications.yaml
 ```
 
 # Test
