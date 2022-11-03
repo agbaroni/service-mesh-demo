@@ -42,7 +42,7 @@ public class APIResource implements Serializable {
 		var agencyId = agency.getId();
 
 		agencyAccounts.setAgency(agencyId);
-		agencyAccounts.setAccounts(accounts.getAll(agencyId).await().indefinitely());
+		agencyAccounts.setAccounts(allAccounts);
 
 		allAgencyAccounts.add(agencyAccounts);
 	    }
