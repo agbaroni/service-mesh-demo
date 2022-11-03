@@ -33,13 +33,15 @@ public class APIResource implements Serializable {
 	return agencies.getAll().onItem().transform(items -> {
 		var l = new LinkedList<AgencyAccounts>();
 
-		for (var item : items) {
-		    var aa = new AgencyAccounts();
+		if (items != null) {
+		    for (var item : items) {
+			var aa = new AgencyAccounts();
 
-		    aa.setAgency(item.getId());
-		    aa.setAccounts(accounts.getAll(item.getId()).await().indefinitely());
+			aa.setAgency(item.getId());
+			aa.setAccounts(accounts.getAll(item.getId()).await().indefinitely());
 
-		    l.add(aa);
+			l.add(aa);
+		    }
 		}
 
 		return l;
