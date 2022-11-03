@@ -49,22 +49,5 @@ public class APIResource implements Serializable {
 	}
 
 	return Uni.createFrom().item(allAgencyAccounts);
-
-	// return agencies.getAll().onItem().transform(items -> {
-	// 	var l = new LinkedList<AgencyAccounts>();
-
-	// 	if (items != null) {
-	// 	    for (var item : items) {
-	// 		var aa = new AgencyAccounts();
-
-	// 		aa.setAgency(item.getId());
-	// 		aa.setAccounts(accounts.getAll(item.getId()).await().indefinitely());
-
-	// 		l.add(aa);
-	// 	    }
-	// 	}
-
-	// 	return l;
-	//     });
     }
 }
