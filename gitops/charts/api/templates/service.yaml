@@ -3,9 +3,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/name: quarkus
-    app.kubernetes.io/component: api
-    app.kubernetes.io/part-of: service-mesh-demo
+    app: 'service-mesh-demo-api'
+    version: v1
   name: api
   namespace: '{{ .Values.project.name }}'
 spec:
@@ -14,6 +13,5 @@ spec:
       port: 8080
       targetPort: 8080
   selector:
-    app.kubernetes.io/name: quarkus
-    app.kubernetes.io/component: api
-    app.kubernetes.io/part-of: service-mesh-demo
+    app: 'service-mesh-demo-api'
+    version: v1

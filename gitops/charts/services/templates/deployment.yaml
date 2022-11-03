@@ -4,24 +4,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app.kubernetes.io/name: quarkus
-    app.kubernetes.io/component: '{{ .name }}'
-    app.kubernetes.io/part-of: service-mesh-demo
+    app: 'service-mesh-demo-{{ .name }}'
+    version: v1
   name: '{{ .name }}'
   namespace: '{{ $.Values.project.name }}'
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app.kubernetes.io/name: quarkus
-      app.kubernetes.io/component: '{{ .name }}'
-      app.kubernetes.io/part-of: service-mesh-demo
+      app: 'service-mesh-demo-{{ .name }}'
+      version: v1
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: 'true'
       labels:
-        app.kubernetes.io/name: quarkus
-        app.kubernetes.io/component: '{{ .name }}'
-        app.kubernetes.io/part-of: service-mesh-demo
+        app: 'service-mesh-demo-{{ .name }}'
+        version: v1
     spec:
       containers:
         - image: 'image-registry.openshift-image-registry.svc:5000/demo/{{ .name }}:latest'
