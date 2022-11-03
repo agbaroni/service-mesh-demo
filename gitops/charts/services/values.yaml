@@ -1,9 +1,5 @@
-databases:
-  - name: database1
-    password: password1
-    username: username1
-  - name: database2
-    password: password2
-    username: username2
+services:
+  - name: service1
+  - name: service2
 project:
   name: demo
