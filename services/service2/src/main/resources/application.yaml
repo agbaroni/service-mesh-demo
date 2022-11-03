@@ -1,0 +1,12 @@
+quarkus:
+  datasource:
+    db-kind: postgresql
+    password: password2
+    reactive:
+      url: 'vertx-reactive:postgresql://database2.demo.svc:5432/database2'
+    username: username2
+  hibernate-orm:
+    database:
+      generation: drop-and-create
+  package:
+    type: uber-jar

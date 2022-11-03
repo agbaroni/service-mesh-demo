@@ -20,7 +20,7 @@ public class AccountKey implements Serializable {
     @Setter
     private String id;
 
-    @Column(nullable = false)
+    @Column(name = "USER_", nullable = false)
     @Getter
     @Setter
     private String user;

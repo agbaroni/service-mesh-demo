@@ -19,30 +19,24 @@ import lombok.Setter;
 @Entity
 @EqualsAndHashCode
 @NamedQueries({
-	@NamedQuery(name = Account.SELECT_ALL, query = "SELECT a FROM Account a WHERE a.key.user = :user"),
-	@NamedQuery(name = Account.SELECT_ONE, query = "SELECT a FROM Account a WHERE a.key.id = :id AND a.key.user = :user")
+	@NamedQuery(name = Agency.SELECT_ALL, query = "SELECT a FROM Agency a"),
+	@NamedQuery(name = Agency.SELECT_ONE, query = "SELECT a FROM Agency a WHERE a.id = :id")
 })
-@Table(name = "ACCOUNTS")
-public class Account implements Serializable {
-    private static final long serialVersionUID = 2767132695127695164L;
+@Table(name = "AGENCIES")
+public class Agency implements Serializable {
+    private static final long serialVersionUID = 865328358263059235L;
 
     public static final String SELECT_ALL = "Account.selectAll";
     public static final String SELECT_ONE = "Account.selectOne";
 
-    @EmbeddedId
+    @Column(name = "AGENCY_ID")
     @Getter
+    @Id
     @Setter
-    private AccountKey key;
+    private String id;
 
     @EqualsAndHashCode.Exclude
-    @Getter
-    @Setter
-    private double amount;
-
-    @EqualsAndHashCode.Exclude
-    @Getter
-    @Setter
-    private String agency;
+    private String city;
 
     @EqualsAndHashCode.Exclude
     @JsonbTransient

@@ -1,0 +1,21 @@
+{{- range .Values.services }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: quarkus
+    app.kubernetes.io/component: '{{ .name }}'
+    app.kubernetes.io/part-of: service-mesh-demo
+  name: '{{ .name }}'
+  namespace: '{{ $.Values.project.name }}'
+spec:
+  ports:
+    - name: quarkus-default
+      port: 8080
+      targetPort: 8080
+  selector:
+    app.kubernetes.io/name: quarkus
+    app.kubernetes.io/component: '{{ .name }}'
+    app.kubernetes.io/part-of: service-mesh-demo
+{{- end }}
