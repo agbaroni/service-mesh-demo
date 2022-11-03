@@ -24,6 +24,6 @@ spec:
         app.kubernetes.io/part-of: service-mesh-demo
     spec:
       containers:
-        - image: 'demo/service1:latest'
+        - image: 'image-registry.openshift-image-registry.svc:5000/demo/service1:latest'
           name: service
 {{- end }}
