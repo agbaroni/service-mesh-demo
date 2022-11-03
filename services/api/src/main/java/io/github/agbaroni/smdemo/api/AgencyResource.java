@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/agencies")
+@Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 @RegisterRestClient(configKey="service2")
 public interface AgencyResource {

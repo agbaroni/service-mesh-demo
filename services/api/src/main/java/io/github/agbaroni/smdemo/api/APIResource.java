@@ -1,5 +1,6 @@
 package io.github.agbaroni.smdemo.api;
 
+import io.smallrye.common.annotation.Blocking;
 import io.smallrye.mutiny.Uni;
 
 import java.io.Serializable;
@@ -28,23 +29,42 @@ public class APIResource implements Serializable {
     @RestClient
     AgencyResource agencies;
 
+    @Blocking
     @GET
     public Uni<List<AgencyAccounts>> getAll() {
-	return agencies.getAll().onItem().transform(items -> {
-		var l = new LinkedList<AgencyAccounts>();
+	var allAgencyAccounts = new LinkedList<AgencyAccounts>();
+	var allAgencies = agencies.getAll().await().indefinitely();
 
-		if (items != null) {
-		    for (var item : items) {
-			var aa = new AgencyAccounts();
+	if (allAgencies != null) {
+	    for (var agency : allAgencies) {
+		var allAccounts = accounts.getAll(agency.getId()).await().indefinitely();
+		var agencyAccounts = new AgencyAccounts();
+		var agencyId = agency.getId();
 
-			aa.setAgency(item.getId());
-			aa.setAccounts(accounts.getAll(item.getId()).await().indefinitely());
+		agencyAccounts.setAgency(agencyId);
+		agencyAccounts.setAccounts(accounts.getAll(agencyId).await().indefinitely());
 
-			l.add(aa);
-		    }
-		}
+		allAgencyAccounts.add(agencyAccounts);
+	    }
+	}
 
-		return l;
-	    });
+	return Uni.createFrom().item(allAgencyAccounts);
+
+	// return agencies.getAll().onItem().transform(items -> {
+	// 	var l = new LinkedList<AgencyAccounts>();
+
+	// 	if (items != null) {
+	// 	    for (var item : items) {
+	// 		var aa = new AgencyAccounts();
+
+	// 		aa.setAgency(item.getId());
+	// 		aa.setAccounts(accounts.getAll(item.getId()).await().indefinitely());
+
+	// 		l.add(aa);
+	// 	    }
+	// 	}
+
+	// 	return l;
+	//     });
     }
 }
