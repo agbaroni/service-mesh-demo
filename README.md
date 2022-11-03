@@ -18,12 +18,34 @@ podman login -u='<USRN>' -p=<PSWD> registry.redhat.io
 
 # Build & Push each component
 
+## Service 1
+
 ```
 cd services/service1
 
 buildah build -t $HOST/demo/service1:latest .
 
 buildah push --tls-verify=false $HOST/demo/service1:latest
+```
+
+## Service 2
+
+```
+cd services/service2
+
+buildah build -t $HOST/demo/service2:latest .
+
+buildah push --tls-verify=false $HOST/demo/service2:latest
+```
+
+## API entrypoint
+
+```
+cd services/api
+
+buildah build -t $HOST/demo/api:latest .
+
+buildah push --tls-verify=false $HOST/demo/api:latest
 ```
 
 # Test
