@@ -21,6 +21,8 @@ metadata:
   name: api
   namespace: demo
 spec:
+  gateways:
+    - api
   hosts:
     - api.demo.svc.cluster.local
   http:
@@ -28,6 +30,8 @@ spec:
       route:
         - destination:
             host: api.demo.svc.cluster.local
+            port:
+              number: 8080
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule

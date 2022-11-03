@@ -8,7 +8,7 @@ metadata:
   name: api
   namespace: '{{ .Values.project.name }}'
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: 'service-mesh-demo-api'

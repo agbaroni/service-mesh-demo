@@ -21,5 +21,5 @@ buildah push --tls-verify=false $HOST/demo/service1:latest
 
 
 
-curl -v http://apism.apps.ocp.sandbox150.opentlc.com/api/
+curl -H 'Content-Type: application/json' -v http://demo-api-525eca1d5089dbdc-istio-system.apps.ocp.sandbox150.opentlc.com/api/
 ```
