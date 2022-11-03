@@ -10,7 +10,7 @@ metadata:
   namespace: '{{ $.Values.project.name }}'
 spec:
   ports:
-    - name: postgres-default
+    - name: tcp
       port: 5432
       targetPort: 5432
   selector:

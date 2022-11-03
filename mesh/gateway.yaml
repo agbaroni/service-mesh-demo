@@ -1,0 +1,41 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: api
+  namespace: demo
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - hosts:
+        - apism.apps.ocp.sandbox150.opentlc.com
+      port:
+        number: 80
+        name: http
+        protocol: HTTP
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: api
+  namespace: demo
+spec:
+  hosts:
+    - api.demo.svc.cluster.local
+  http:
+    - name: "api-v1-route"
+      route:
+        - destination:
+            host: api.demo.svc.cluster.local
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: api
+  namespace: demo
+spec:
+  host: api.demo.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST

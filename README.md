@@ -18,4 +18,8 @@ podman login -u='<USRN>' -p=<PSWD> registry.redhat.io
 buildah build -t $HOST/demo/service1:latest .
 
 buildah push --tls-verify=false $HOST/demo/service1:latest
+
+
+
+curl -v http://apism.apps.ocp.sandbox150.opentlc.com/api/
 ```

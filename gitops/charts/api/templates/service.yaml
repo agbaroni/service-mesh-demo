@@ -9,7 +9,7 @@ metadata:
   namespace: '{{ .Values.project.name }}'
 spec:
   ports:
-    - name: quarkus-default
+    - name: http
       port: 8080
       targetPort: 8080
   selector:
